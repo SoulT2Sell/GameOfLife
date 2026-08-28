@@ -11,4 +11,7 @@ The universe of the Game of Life is an infinite, two-dimensional orthogonal grid
     
 I wrote the **GameOfLife** with Typescript/Javascript and the html/css. 
 
+## An Example of GameOfLife
+![GameOfLife](game-of-life-loop-cropped.gif)
+
 [**wikipedia link for more information**](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
