@@ -20,19 +20,29 @@ function fillTheField(rows: number, cols: number): boolean[][] {
     return createdField;
 }
     
-function printOutPut(field: boolean[][]): void
+function renderField(field: boolean[][]): void
 {
+    const game = document.getElementById("game") as HTMLDivElement
+
+    if(!game)
+        return;
+
+    game.innerHTML = "";
+
     for(const row of field)
     {
-        let oneline: string = ""
         for(const value of row)
         {
-            if(!value)
-                oneline += " ";
-            else
-                oneline += "#";
+
+            const cell = document.createElement("div") as HTMLDivElement
+
+            cell.classList.add("cell")
+
+            if(value)
+                cell.classList.add("alive");
+            
+            game.appendChild(cell)
         }
-        console.log(oneline);
     }
 }
 
@@ -85,14 +95,13 @@ function Sleep(ms: number): Promise<void>
 
 async function Main() : Promise<void>
 {
-    const ROWS: number = 20;
-    const COLS: number = 20;
+    const ROWS: number = 25;
+    const COLS: number = 25;
     let myField: boolean[][] = fillTheField(ROWS, COLS);
 
     while(true)
     {
-        console.clear();
-        printOutPut(myField);
+        renderField(myField);
         myField = logic(myField, ROWS, COLS);
         await Sleep(200);
     }
